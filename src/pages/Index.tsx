@@ -7,13 +7,17 @@ import ProductGrid from '@/components/products/ProductGrid';
 import DailyEcoTip from '@/components/home/DailyEcoTip';
 import EcoNews from '@/components/home/EcoNews';
 import { categories, products } from '@/data/products';
+import { barterItems } from '@/data/barter';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import BarterItemGrid from '@/components/barter/BarterItemGrid';
 
 const Index = () => {
   // Get featured products (first 4)
   const featuredProducts = products.slice(0, 4);
+  // Get featured barter items (first 4)
+  const featuredBarterItems = barterItems.slice(0, 4);
 
   return (
     <MainLayout>
@@ -37,8 +41,27 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Eco Tips and News */}
+      {/* Featured Barter Items */}
       <section className="py-12 bg-forest-50">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-forest-800">Featured Barter Items</h2>
+            <Link to="/barter" className="text-forest-600 hover:text-forest-800 flex items-center">
+              View All Barter Items
+              <ArrowRight className="ml-1 h-4 w-4" />
+            </Link>
+          </div>
+          <BarterItemGrid items={featuredBarterItems} />
+          <div className="flex justify-center mt-8">
+            <Button asChild className="bg-forest-600 hover:bg-forest-700 text-white">
+              <Link to="/barter">Join Our Barter Community</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Eco Tips and News */}
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="md:col-span-1">

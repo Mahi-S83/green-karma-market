@@ -79,7 +79,8 @@ const BarterFilters = ({
                   setLocationFilter('');
                   setCategoryFilter('');
                   setConditionFilter('');
-                  setAvailabilityChange([]);
+                  // Fixed: Changed setAvailabilityChange to use empty array
+                  handleAvailabilityChange(''); 
                 }}
                 className="text-xs h-8"
               >

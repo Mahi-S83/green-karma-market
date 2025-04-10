@@ -7,13 +7,15 @@ import {
   X, 
   Search, 
   Leaf, 
-  HandHeart 
+  HandHeart,
+  LogIn
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Simulated login state
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -43,7 +45,7 @@ const Header = () => {
             </Link>
           </nav>
 
-          {/* Search and Cart */}
+          {/* Search, Cart, and Login */}
           <div className="hidden md:flex items-center space-x-4">
             <div className="relative">
               <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -61,6 +63,12 @@ const Header = () => {
             <Button variant="ghost" size="icon" asChild>
               <Link to="/barter" aria-label="Barter items">
                 <HandHeart className="h-5 w-5 text-forest-700" />
+              </Link>
+            </Button>
+            <Button variant="outline" size="sm" asChild className="bg-forest-50 border-forest-200 hover:bg-forest-100 text-forest-700">
+              <Link to="/login">
+                <LogIn className="mr-1 h-4 w-4" />
+                Login
               </Link>
             </Button>
           </div>
@@ -130,6 +138,12 @@ const Header = () => {
                   </Link>
                 </Button>
               </div>
+              <Button variant="outline" size="sm" asChild className="bg-forest-50 border-forest-200 hover:bg-forest-100 text-forest-700 mt-2">
+                <Link to="/login" className="flex items-center justify-center w-full">
+                  <LogIn className="mr-1 h-4 w-4" />
+                  Login
+                </Link>
+              </Button>
             </nav>
           </div>
         )}

@@ -11,6 +11,7 @@ import Barter from "./pages/Barter";
 import BarterDetail from "./pages/BarterDetail";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/barter" element={<Barter />} />
           <Route path="/barter/:id" element={<BarterDetail />} />
           <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
