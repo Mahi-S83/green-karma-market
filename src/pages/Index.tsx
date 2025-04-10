@@ -10,13 +10,10 @@ import { categories, products } from '@/data/products';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { barterItems } from '@/data/barter';
-import BarterItemGrid from '@/components/barter/BarterItemGrid';
 
 const Index = () => {
   // Get featured products (first 4)
   const featuredProducts = products.slice(0, 4);
-  const featuredBarterItems = barterItems.slice(0, 4);
 
   return (
     <MainLayout>
@@ -30,8 +27,8 @@ const Index = () => {
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold">Featured Products</h2>
-            <Link to="/products" className="text-nature-600 hover:text-nature-800 flex items-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-forest-800">Featured Products</h2>
+            <Link to="/products" className="text-forest-600 hover:text-forest-800 flex items-center">
               View All Products
               <ArrowRight className="ml-1 h-4 w-4" />
             </Link>
@@ -41,14 +38,14 @@ const Index = () => {
       </section>
 
       {/* Eco Tips and News */}
-      <section className="py-12 bg-nature-50">
+      <section className="py-12 bg-forest-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="md:col-span-1">
               <DailyEcoTip />
             </div>
             <div className="md:col-span-2">
-              <h2 className="text-2xl font-bold mb-4">Why Choose Eco-Friendly?</h2>
+              <h2 className="text-2xl font-bold mb-4 text-forest-800">Why Choose Eco-Friendly?</h2>
               <p className="mb-4">
                 By choosing eco-friendly, sustainable products, you're helping to reduce waste, conserve natural resources, and minimize your environmental footprint.
               </p>
@@ -62,28 +59,16 @@ const Index = () => {
                 <li>Free from harmful chemicals and toxins</li>
                 <li>Packaged with minimal or plastic-free materials</li>
               </ul>
-              <Button asChild variant="outline" className="border-nature-600 text-nature-700 hover:bg-nature-100">
-                <Link to="/about">Learn More About Our Mission</Link>
-              </Button>
+              <div className="flex flex-wrap gap-4">
+                <Button asChild variant="outline" className="border-forest-600 text-forest-700 hover:bg-forest-100">
+                  <Link to="/about">Learn About Our Mission</Link>
+                </Button>
+                <Button asChild className="bg-forest-600 hover:bg-forest-700 text-white">
+                  <Link to="/barter">Visit Our Barter Exchange</Link>
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Barter Exchange */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center mb-8">
-            <div>
-              <h2 className="text-2xl md:text-3xl font-bold">Barter Exchange</h2>
-              <p className="text-muted-foreground mt-2">Trade items you no longer need with other eco-conscious community members</p>
-            </div>
-            <Link to="/barter" className="text-earth-600 hover:text-earth-800 flex items-center">
-              View All Listings
-              <ArrowRight className="ml-1 h-4 w-4" />
-            </Link>
-          </div>
-          <BarterItemGrid items={featuredBarterItems} />
         </div>
       </section>
 

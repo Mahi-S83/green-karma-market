@@ -23,22 +23,22 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <Leaf className="h-8 w-8 text-nature-600" />
-            <span className="text-xl font-bold text-nature-800">Green Karma Market</span>
+            <Leaf className="h-8 w-8 text-forest-600" />
+            <span className="text-xl font-bold text-forest-800">The Eco Loop</span>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-nature-800 hover:text-nature-600 font-medium">
+            <Link to="/" className="text-forest-800 hover:text-forest-600 font-medium">
               Home
             </Link>
-            <Link to="/products" className="text-nature-800 hover:text-nature-600 font-medium">
+            <Link to="/products" className="text-forest-800 hover:text-forest-600 font-medium">
               Products
             </Link>
-            <Link to="/barter" className="text-nature-800 hover:text-nature-600 font-medium">
+            <Link to="/barter" className="text-forest-800 hover:text-forest-600 font-medium">
               Barter
             </Link>
-            <Link to="/about" className="text-nature-800 hover:text-nature-600 font-medium">
+            <Link to="/about" className="text-forest-800 hover:text-forest-600 font-medium">
               About Us
             </Link>
           </nav>
@@ -50,17 +50,17 @@ const Header = () => {
               <Input 
                 type="search"
                 placeholder="Search products..."
-                className="w-64 pl-8 rounded-full bg-muted/50 border-nature-200 focus-visible:ring-nature-500"
+                className="w-64 pl-8 rounded-full bg-muted/50 border-forest-200 focus-visible:ring-forest-500"
               />
             </div>
             <Button variant="ghost" size="icon" asChild>
               <Link to="/cart" aria-label="Shopping cart">
-                <ShoppingCart className="h-5 w-5 text-nature-700" />
+                <ShoppingCart className="h-5 w-5 text-forest-700" />
               </Link>
             </Button>
             <Button variant="ghost" size="icon" asChild>
               <Link to="/barter" aria-label="Barter items">
-                <HandHeart className="h-5 w-5 text-nature-700" />
+                <HandHeart className="h-5 w-5 text-forest-700" />
               </Link>
             </Button>
           </div>
@@ -82,28 +82,28 @@ const Header = () => {
             <nav className="flex flex-col space-y-4">
               <Link 
                 to="/" 
-                className="text-nature-800 hover:text-nature-600 font-medium px-2 py-1"
+                className="text-forest-800 hover:text-forest-600 font-medium px-2 py-1"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </Link>
               <Link 
                 to="/products" 
-                className="text-nature-800 hover:text-nature-600 font-medium px-2 py-1"
+                className="text-forest-800 hover:text-forest-600 font-medium px-2 py-1"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Products
               </Link>
               <Link 
                 to="/barter" 
-                className="text-nature-800 hover:text-nature-600 font-medium px-2 py-1"
+                className="text-forest-800 hover:text-forest-600 font-medium px-2 py-1"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Barter
               </Link>
               <Link 
                 to="/about" 
-                className="text-nature-800 hover:text-nature-600 font-medium px-2 py-1"
+                className="text-forest-800 hover:text-forest-600 font-medium px-2 py-1"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About Us
@@ -113,19 +113,19 @@ const Header = () => {
                 <Input 
                   type="search"
                   placeholder="Search products..."
-                  className="w-full pl-8 rounded-full bg-muted/50 border-nature-200"
+                  className="w-full pl-8 rounded-full bg-muted/50 border-forest-200"
                 />
               </div>
               <div className="flex space-x-4 pt-2">
                 <Button variant="ghost" size="icon" asChild className="flex-1">
                   <Link to="/cart" className="flex items-center justify-center space-x-2">
-                    <ShoppingCart className="h-5 w-5 text-nature-700" />
+                    <ShoppingCart className="h-5 w-5 text-forest-700" />
                     <span>Cart</span>
                   </Link>
                 </Button>
                 <Button variant="ghost" size="icon" asChild className="flex-1">
                   <Link to="/barter" className="flex items-center justify-center space-x-2">
-                    <HandHeart className="h-5 w-5 text-nature-700" />
+                    <HandHeart className="h-5 w-5 text-forest-700" />
                     <span>Barter</span>
                   </Link>
                 </Button>

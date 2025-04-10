@@ -9,4 +9,11 @@ export interface BarterItem {
   exchangeFor: string;
   contactInfo?: string;
   createdAt: string;
+  condition?: "new" | "like-new" | "good" | "fair" | "worn";
+  category?: string;
+  availableFor?: ("exchange" | "donation" | "loan")[];
+  estimatedValue?: number;
+  duration?: number; // Duration in days for loan items
+  preferredExchangeLocation?: string;
+  tags?: string[];
 }

@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -63,7 +62,32 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom eco-friendly color palette
+				// Forest Greens color palette
+				forest: {
+					50: '#f2f9f4',
+					100: '#e4f3e8',
+					200: '#c8e6d1',
+					300: '#9dd4ae',
+					400: '#6cbb86',
+					500: '#48a067',
+					600: '#358050',
+					700: '#2c6843',
+					800: '#275337',
+					900: '#22462f',
+				},
+				bark: {
+					50: '#f9f6f3',
+					100: '#f0e9e2',
+					200: '#e0d0c0',
+					300: '#cbb198',
+					400: '#b48f6f',
+					500: '#a07a5a',
+					600: '#8d664a',
+					700: '#74543e',
+					800: '#624736',
+					900: '#533d30',
+				},
+				// Keep existing eco-friendly color palette
 				nature: {
 					50: '#f5f9f0',
 					100: '#e6f0e0',
