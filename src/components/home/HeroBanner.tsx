@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Leaf, HandHeart } from 'lucide-react';
+import { ArrowRight, Leaf } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const HeroBanner = () => {
@@ -25,12 +25,6 @@ const HeroBanner = () => {
               <Link to="/products">
                 Shop All Products
                 <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
-              <Link to="/barter" className="flex items-center">
-                <HandHeart className="mr-2 h-5 w-5" />
-                Barter Exchange
               </Link>
             </Button>
           </div>

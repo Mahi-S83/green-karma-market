@@ -3,9 +3,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { BadgeCheck, HandHeart, MessageCircle, Clock, Tag } from 'lucide-react';
+import { HandHeart, MessageCircle, Clock, Tag, Leaf, Award } from 'lucide-react';
 import { BarterItem } from '@/types/barter';
 import { Badge } from '@/components/ui/badge';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 interface BarterItemCardProps {
   item: BarterItem;
@@ -54,6 +55,25 @@ const BarterItemCard = ({ item }: BarterItemCardProps) => {
               {item.condition.charAt(0).toUpperCase() + item.condition.slice(1)}
             </div>
           )}
+          
+          {item.certifications && item.certifications.length > 0 && (
+            <div className="absolute bottom-2 left-2 flex gap-1">
+              {item.certifications.map((cert, index) => (
+                <TooltipProvider key={index}>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <div className="bg-forest-600/80 p-1 rounded-full">
+                        <Award className="h-4 w-4 text-white" />
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{cert}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              ))}
+            </div>
+          )}
         </div>
       </Link>
 
@@ -67,6 +87,12 @@ const BarterItemCard = ({ item }: BarterItemCardProps) => {
           {item.category && (
             <Badge variant="secondary" className="text-xs bg-bark-100 text-bark-800 border-none">
               {item.category}
+            </Badge>
+          )}
+          {item.sustainability && (
+            <Badge className="text-xs bg-forest-100 text-forest-800 border-none">
+              <Leaf className="mr-1 h-3 w-3" />
+              Sustainable
             </Badge>
           )}
         </div>
@@ -98,12 +124,18 @@ const BarterItemCard = ({ item }: BarterItemCardProps) => {
           </p>
 
           {item.tags && item.tags.length > 0 && (
-            <div className="flex items-center gap-1 mt-2">
+            <div className="flex items-center gap-1 mt-2 flex-wrap">
               <Tag className="h-3 w-3 text-muted-foreground" />
               <p className="text-xs text-muted-foreground">
                 {item.tags.join(', ')}
               </p>
             </div>
+          )}
+          
+          {item.materials && item.materials.length > 0 && (
+            <p className="text-xs text-forest-700">
+              <span className="font-medium">Materials:</span> {item.materials.join(', ')}
+            </p>
           )}
         </div>
       </CardContent>
