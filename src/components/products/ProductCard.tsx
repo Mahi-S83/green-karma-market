@@ -12,14 +12,23 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
+  // Ensure image URL is valid by providing a fallback
+  const imageUrl = product.imageUrl && product.imageUrl.trim() !== '' 
+    ? product.imageUrl 
+    : 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+
   return (
     <Card className="h-full flex flex-col overflow-hidden transition-all duration-300 hover:shadow-md">
       <Link to={`/product/${product.id}`} className="overflow-hidden">
         <div className="aspect-square overflow-hidden relative">
           <img
-            src={product.imageUrl}
+            src={imageUrl}
             alt={product.name}
             className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
+            onError={(e) => {
+              // Fallback image if the primary one fails to load
+              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+            }}
           />
           {product.badges && product.badges.length > 0 && (
             <div className="absolute top-2 left-2 flex flex-wrap gap-1">
