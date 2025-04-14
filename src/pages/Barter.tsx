@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import { barterItems } from '@/data/barter';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -11,6 +11,7 @@ import BarterTabContent from '@/components/barter/BarterTabContent';
 import BarterResultsSummary from '@/components/barter/BarterResultsSummary';
 import BarterInfoAccordion from '@/components/barter/BarterInfoAccordion';
 import BarterCategoryCards from '@/components/barter/BarterCategoryCards';
+import { useSearchParams } from 'react-router-dom';
 
 const Barter = () => {
   const [showForm, setShowForm] = useState(false);
@@ -21,6 +22,16 @@ const Barter = () => {
   const [availableForFilter, setAvailableForFilter] = useState<string[]>([]);
   const [activeTab, setActiveTab] = useState('exchange');
   const [showFilterPanel, setShowFilterPanel] = useState(false);
+  const [searchParams] = useSearchParams();
+  
+  // Handle URL search param on component mount
+  useEffect(() => {
+    const searchParam = searchParams.get('search');
+    if (searchParam) {
+      setSearchTerm(searchParam);
+      setShowFilterPanel(true);
+    }
+  }, [searchParams]);
   
   // Handle checkbox changes for availability filters
   const handleAvailabilityChange = (value: string) => {

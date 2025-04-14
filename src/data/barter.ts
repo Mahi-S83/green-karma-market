@@ -11,7 +11,10 @@ export const barterItems: BarterItem[] = [
     location: "Mumbai, MH",
     exchangeFor: "Organic plant seeds, bamboo planters, or gardening tools",
     contactInfo: "priya.s@example.com",
-    createdAt: "2023-06-12T10:30:00Z"
+    createdAt: "2023-06-12T10:30:00Z",
+    category: "home",
+    condition: "good",
+    availableFor: ["exchange"]
   },
   {
     id: "2",
@@ -22,7 +25,10 @@ export const barterItems: BarterItem[] = [
     location: "Delhi, DL",
     exchangeFor: "Stainless steel water bottle or food containers",
     contactInfo: "rajiv.p@example.com",
-    createdAt: "2023-06-18T14:45:00Z"
+    createdAt: "2023-06-18T14:45:00Z",
+    category: "kitchen",
+    condition: "new",
+    availableFor: ["exchange", "donation"]
   },
   {
     id: "3",
@@ -33,7 +39,10 @@ export const barterItems: BarterItem[] = [
     location: "Bangalore, KA",
     exchangeFor: "Organic cotton produce bags or beeswax wraps",
     contactInfo: "ananya.d@example.com",
-    createdAt: "2023-06-22T08:15:00Z"
+    createdAt: "2023-06-22T08:15:00Z",
+    category: "accessories",
+    condition: "good",
+    availableFor: ["exchange"]
   },
   {
     id: "4",
@@ -44,7 +53,10 @@ export const barterItems: BarterItem[] = [
     location: "Chennai, TN",
     exchangeFor: "Indoor planters, gardening tools, or plant cuttings",
     contactInfo: "vikram.s@example.com",
-    createdAt: "2023-06-25T16:20:00Z"
+    createdAt: "2023-06-25T16:20:00Z",
+    category: "gardening",
+    condition: "new",
+    availableFor: ["exchange", "donation"]
   },
   {
     id: "5",
@@ -55,7 +67,10 @@ export const barterItems: BarterItem[] = [
     location: "Hyderabad, TG",
     exchangeFor: "Handmade soaps, natural candles, or eco-friendly cleaning products",
     contactInfo: "meera.r@example.com",
-    createdAt: "2023-06-28T12:10:00Z"
+    createdAt: "2023-06-28T12:10:00Z",
+    category: "home",
+    condition: "like-new",
+    availableFor: ["exchange", "loan"]
   },
   {
     id: "6",
@@ -66,7 +81,10 @@ export const barterItems: BarterItem[] = [
     location: "Kolkata, WB",
     exchangeFor: "Handcrafted pottery, recycled glassware, or bamboo products",
     contactInfo: "kiran.k@example.com",
-    createdAt: "2023-07-02T09:30:00Z"
+    createdAt: "2023-07-02T09:30:00Z",
+    category: "home",
+    condition: "new",
+    availableFor: ["exchange", "donation"]
   },
   {
     id: "7",
@@ -77,7 +95,10 @@ export const barterItems: BarterItem[] = [
     location: "Pune, MH",
     exchangeFor: "Organic vegetable seeds, garden tools, or indoor plants",
     contactInfo: "arjun.n@example.com",
-    createdAt: "2023-07-05T15:45:00Z"
+    createdAt: "2023-07-05T15:45:00Z",
+    category: "gardening",
+    condition: "good",
+    availableFor: ["exchange", "loan"]
   },
   {
     id: "8",
@@ -88,6 +109,9 @@ export const barterItems: BarterItem[] = [
     location: "Ahmedabad, GJ",
     exchangeFor: "Organic spices, homemade preserves, or beeswax wraps",
     contactInfo: "leela.m@example.com",
-    createdAt: "2023-07-10T11:20:00Z"
+    createdAt: "2023-07-10T11:20:00Z",
+    category: "kitchen",
+    condition: "like-new",
+    availableFor: ["exchange"]
   }
 ];

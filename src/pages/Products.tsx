@@ -5,30 +5,45 @@ import ProductGrid from '@/components/products/ProductGrid';
 import ProductFilters from '@/components/filters/ProductFilters';
 import { products } from '@/data/products';
 import { Product } from '@/types/product';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
 const Products = () => {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
+  const [searchParams] = useSearchParams();
 
   // Get min and max prices from products
   const minPrice = Math.min(...products.map(product => product.price));
   const maxPrice = Math.max(...products.map(product => product.price));
   
-  // Get category from URL params if exists
+  // Process URL parameters for category and search term
   useEffect(() => {
-    const queryParams = new URLSearchParams(location.search);
-    const categoryParam = queryParams.get('category');
+    const categoryParam = searchParams.get('category');
+    const searchParam = searchParams.get('search');
     
+    setLoading(true);
+    
+    let filtered = [...products];
+    
+    // Apply category filter
     if (categoryParam) {
-      // Apply category filter from URL
-      const filtered = products.filter(product => product.category === categoryParam);
-      setFilteredProducts(filtered);
-    } else {
-      setFilteredProducts(products);
+      filtered = filtered.filter(product => product.category === categoryParam);
     }
-  }, [location.search]);
+    
+    // Apply search filter
+    if (searchParam) {
+      const searchLower = searchParam.toLowerCase();
+      filtered = filtered.filter(product => 
+        product.name.toLowerCase().includes(searchLower) || 
+        product.description.toLowerCase().includes(searchLower) ||
+        (product.category && product.category.toLowerCase().includes(searchLower))
+      );
+    }
+    
+    setFilteredProducts(filtered);
+    setLoading(false);
+  }, [location.search, searchParams]);
 
   // Handle filter changes from filter component
   const handleFilterChange = (filters: any) => {
@@ -57,6 +72,15 @@ const Products = () => {
           return false;
         }
         
+        // Apply search term from URL if it exists
+        const searchTerm = searchParams.get('search');
+        if (searchTerm) {
+          const searchLower = searchTerm.toLowerCase();
+          return product.name.toLowerCase().includes(searchLower) || 
+                 product.description.toLowerCase().includes(searchLower) ||
+                 (product.category && product.category.toLowerCase().includes(searchLower));
+        }
+        
         return true;
       });
       
@@ -73,6 +97,11 @@ const Products = () => {
           <p className="text-muted-foreground">
             Browse our selection of sustainable, eco-friendly products to reduce your environmental footprint.
           </p>
+          {searchParams.get('search') && (
+            <div className="mt-2 text-sm">
+              <p>Search results for: <span className="font-medium">{searchParams.get('search')}</span></p>
+            </div>
+          )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
