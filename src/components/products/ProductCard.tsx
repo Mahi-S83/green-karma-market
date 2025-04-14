@@ -18,7 +18,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
   // Ensure image URL is valid by providing a fallback
   const imageUrl = product.imageUrl && product.imageUrl.trim() !== '' 
     ? product.imageUrl 
-    : 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+    : 'https://images.unsplash.com/photo-1584346233277-6ba261100c06?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault(); // Prevent navigation to product detail
@@ -35,7 +35,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
             onError={(e) => {
               // Fallback image if the primary one fails to load
-              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1584346233277-6ba261100c06?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
             }}
           />
           {product.badges && product.badges.length > 0 && (

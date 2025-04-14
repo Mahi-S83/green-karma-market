@@ -11,7 +11,7 @@ const newsItems = [
     title: "India Bans Single-Use Plastic Nationwide",
     summary: "The ban covers items like straws, cutlery, packaging, and more as part of the country's effort to reduce plastic pollution.",
     date: "2023-04-25",
-    imageUrl: "https://images.unsplash.com/photo-1604187351574-c75ca79f5807?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1530587191325-3db32d826c18?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     url: "#"
   },
   {
@@ -19,7 +19,7 @@ const newsItems = [
     title: "New Recycling Center Opens in Bangalore",
     summary: "The state-of-the-art facility can process up to 500 tonnes of waste daily, focusing on plastics and e-waste.",
     date: "2023-05-12",
-    imageUrl: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     url: "#"
   },
   {
@@ -27,7 +27,7 @@ const newsItems = [
     title: "Sustainable Fashion Initiative Gains Momentum",
     summary: "Local designers are pioneering eco-friendly textile innovations using traditional techniques and modern technology.",
     date: "2023-06-03",
-    imageUrl: "https://images.unsplash.com/photo-1556905200-279565513a2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     url: "#"
   }
 ];

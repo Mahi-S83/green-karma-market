@@ -44,7 +44,7 @@ const BarterItemCard = ({ item }: BarterItemCardProps) => {
   // Ensure image URL is valid by providing a fallback
   const imageUrl = item.imageUrl && item.imageUrl.trim() !== '' 
     ? item.imageUrl 
-    : 'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+    : 'https://images.unsplash.com/photo-1604762512526-b7ce049b5764?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
 
   return (
     <Card className="h-full flex flex-col overflow-hidden transition-all duration-300 hover:shadow-md border-forest-100">
@@ -56,7 +56,7 @@ const BarterItemCard = ({ item }: BarterItemCardProps) => {
             className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
             onError={(e) => {
               // Fallback image if the primary one fails to load
-              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1604762512526-b7ce049b5764?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
             }}
           />
           {item.condition && (

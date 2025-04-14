@@ -38,7 +38,7 @@ const ProductDetail = () => {
   const getValidImageUrl = (url?: string) => {
     return url && url.trim() !== '' 
       ? url 
-      : 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+      : 'https://images.unsplash.com/photo-1584346233277-6ba261100c06?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
   };
 
   if (loading) {
@@ -101,12 +101,12 @@ const ProductDetail = () => {
             <Card className="overflow-hidden">
               <div className="aspect-square">
                 <img
-                  src={getValidImageUrl(product.imageUrl)}
-                  alt={product.name}
+                  src={getValidImageUrl(product?.imageUrl)}
+                  alt={product?.name}
                   className="object-cover w-full h-full"
                   onError={(e) => {
                     // Fallback image if the primary one fails to load
-                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1584346233277-6ba261100c06?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
                   }}
                 />
               </div>

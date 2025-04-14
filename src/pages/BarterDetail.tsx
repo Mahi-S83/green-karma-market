@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import MainLayout from '@/components/layout/MainLayout';
@@ -33,7 +32,7 @@ const BarterDetail = () => {
   const getValidImageUrl = (url?: string) => {
     return url && url.trim() !== '' 
       ? url 
-      : 'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+      : 'https://images.unsplash.com/photo-1604762512526-b7ce049b5764?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
   };
 
   if (loading) {
@@ -105,12 +104,12 @@ const BarterDetail = () => {
             <Card className="overflow-hidden">
               <div className="aspect-square">
                 <img
-                  src={getValidImageUrl(item.imageUrl)}
-                  alt={item.title}
+                  src={getValidImageUrl(item?.imageUrl)}
+                  alt={item?.title}
                   className="object-cover w-full h-full"
                   onError={(e) => {
                     // Fallback image if the primary one fails to load
-                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1604762512526-b7ce049b5764?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
                   }}
                 />
               </div>
