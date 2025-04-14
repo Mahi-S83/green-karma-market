@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import HeroBanner from '@/components/home/HeroBanner';
 import CategoryPreview from '@/components/home/CategoryPreview';
@@ -12,8 +12,12 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import BarterItemGrid from '@/components/barter/BarterItemGrid';
+import ChatBot from '@/components/chat/ChatBot';
+import ChatBotButton from '@/components/chat/ChatBotButton';
 
 const Index = () => {
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  
   // Get featured products (first 4)
   const featuredProducts = products.slice(0, 4);
   // Get featured barter items (first 4)
@@ -97,6 +101,10 @@ const Index = () => {
 
       {/* Eco News Section */}
       <EcoNews />
+      
+      {/* Chat Bot */}
+      <ChatBotButton isOpen={isChatOpen} onClick={() => setIsChatOpen(!isChatOpen)} />
+      <ChatBot isOpen={isChatOpen} />
     </MainLayout>
   );
 };
