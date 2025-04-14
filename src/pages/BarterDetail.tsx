@@ -29,6 +29,13 @@ const BarterDetail = () => {
     toast.success("Exchange offer sent! The owner will contact you soon.");
   };
 
+  // Ensure image URL is valid by providing a fallback
+  const getValidImageUrl = (url?: string) => {
+    return url && url.trim() !== '' 
+      ? url 
+      : 'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+  };
+
   if (loading) {
     return (
       <MainLayout>
@@ -98,9 +105,13 @@ const BarterDetail = () => {
             <Card className="overflow-hidden">
               <div className="aspect-square">
                 <img
-                  src={item.imageUrl}
+                  src={getValidImageUrl(item.imageUrl)}
                   alt={item.title}
                   className="object-cover w-full h-full"
+                  onError={(e) => {
+                    // Fallback image if the primary one fails to load
+                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+                  }}
                 />
               </div>
             </Card>

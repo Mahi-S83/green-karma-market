@@ -31,6 +31,13 @@ const ProductDetail = () => {
     toast.success(`${quantity} ${quantity === 1 ? 'item' : 'items'} added to cart`);
   };
 
+  // Ensure image URL is valid by providing a fallback
+  const getValidImageUrl = (url?: string) => {
+    return url && url.trim() !== '' 
+      ? url 
+      : 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+  };
+
   if (loading) {
     return (
       <MainLayout>
@@ -91,9 +98,13 @@ const ProductDetail = () => {
             <Card className="overflow-hidden">
               <div className="aspect-square">
                 <img
-                  src={product.imageUrl}
+                  src={getValidImageUrl(product.imageUrl)}
                   alt={product.name}
                   className="object-cover w-full h-full"
+                  onError={(e) => {
+                    // Fallback image if the primary one fails to load
+                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+                  }}
                 />
               </div>
             </Card>
