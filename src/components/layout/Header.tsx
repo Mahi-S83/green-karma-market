@@ -12,12 +12,14 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useCart } from "@/contexts/CartContext";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Simulated login state
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
+  const { itemCount } = useCart();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   
@@ -67,9 +69,14 @@ const Header = () => {
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </form>
-            <Button variant="ghost" size="icon" asChild>
+            <Button variant="ghost" size="icon" asChild className="relative">
               <Link to="/cart" aria-label="Shopping cart">
                 <ShoppingCart className="h-5 w-5 text-forest-700" />
+                {itemCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-nature-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    {itemCount}
+                  </span>
+                )}
               </Link>
             </Button>
             <Button variant="ghost" size="icon" asChild>
@@ -140,10 +147,15 @@ const Header = () => {
                 <Button type="submit" className="sr-only">Search</Button>
               </form>
               <div className="flex space-x-4 pt-2">
-                <Button variant="ghost" size="icon" asChild className="flex-1">
+                <Button variant="ghost" size="icon" asChild className="flex-1 relative">
                   <Link to="/cart" className="flex items-center justify-center space-x-2">
                     <ShoppingCart className="h-5 w-5 text-forest-700" />
                     <span>Cart</span>
+                    {itemCount > 0 && (
+                      <span className="absolute top-0 right-0 bg-nature-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                        {itemCount}
+                      </span>
+                    )}
                   </Link>
                 </Button>
                 <Button variant="ghost" size="icon" asChild className="flex-1">

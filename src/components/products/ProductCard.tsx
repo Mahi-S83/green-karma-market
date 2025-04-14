@@ -6,16 +6,24 @@ import { Button } from '@/components/ui/button';
 import { ShoppingCart } from 'lucide-react';
 import EcoBadge from '@/components/ui/eco-badge';
 import { Product } from '@/types/product';
+import { useCart } from '@/contexts/CartContext';
 
 interface ProductCardProps {
   product: Product;
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
+  const { addToCart } = useCart();
+  
   // Ensure image URL is valid by providing a fallback
   const imageUrl = product.imageUrl && product.imageUrl.trim() !== '' 
     ? product.imageUrl 
     : 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent navigation to product detail
+    addToCart(product, 1);
+  };
 
   return (
     <Card className="h-full flex flex-col overflow-hidden transition-all duration-300 hover:shadow-md">
@@ -57,7 +65,13 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <p className="font-bold text-lg price">
           ₹{product.price.toLocaleString('en-IN')}
         </p>
-        <Button variant="outline" size="sm" className="rounded-full text-xs bg-nature-50 border-nature-200 hover:bg-nature-100">
+        <Button 
+          variant="outline" 
+          size="sm" 
+          className="rounded-full text-xs bg-nature-50 border-nature-200 hover:bg-nature-100"
+          onClick={handleAddToCart}
+          disabled={product.stock <= 0}
+        >
           <ShoppingCart className="mr-1 h-3.5 w-3.5" />
           Add to Cart
         </Button>

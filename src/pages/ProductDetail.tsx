@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import MainLayout from '@/components/layout/MainLayout';
@@ -8,6 +7,7 @@ import { ShoppingCart, ArrowLeft, Star } from 'lucide-react';
 import EcoBadge from '@/components/ui/eco-badge';
 import { products } from '@/data/products';
 import { Product } from '@/types/product';
+import { useCart } from '@/contexts/CartContext';
 import { toast } from "sonner";
 
 const ProductDetail = () => {
@@ -15,6 +15,7 @@ const ProductDetail = () => {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
 
   useEffect(() => {
     // Simulate loading
@@ -28,7 +29,9 @@ const ProductDetail = () => {
   }, [id]);
 
   const handleAddToCart = () => {
-    toast.success(`${quantity} ${quantity === 1 ? 'item' : 'items'} added to cart`);
+    if (product) {
+      addToCart(product, quantity);
+    }
   };
 
   // Ensure image URL is valid by providing a fallback
