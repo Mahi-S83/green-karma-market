@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React from 'react';//missing label error was there
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -44,7 +43,6 @@ const BarterFilters = ({
   return (
     <>
       <div className="flex items-center justify-between mb-4">
-        {/* Filter toggle button */}
         <Button 
           variant="outline" 
           size="sm" 
@@ -56,9 +54,9 @@ const BarterFilters = ({
           {(locationFilter || categoryFilter || conditionFilter || availableForFilter.length > 0) && (
             <Badge className="ml-1 bg-forest-600 text-white h-5 w-5 p-0 flex items-center justify-center rounded-full">
               {[
-                locationFilter ? 1 : 0, 
-                categoryFilter ? 1 : 0, 
-                conditionFilter ? 1 : 0, 
+                locationFilter !== 'all' ? 1 : 0, 
+                categoryFilter !== 'all' ? 1 : 0, 
+                conditionFilter !== 'all' ? 1 : 0, 
                 availableForFilter.length > 0 ? 1 : 0
               ].filter(Boolean).length}
             </Badge>
@@ -66,7 +64,6 @@ const BarterFilters = ({
         </Button>
       </div>
 
-      {/* Search and Filters panel */}
       <div className={`mb-6 ${showFilterPanel ? 'block' : 'hidden'}`}>
         <Card>
           <CardHeader className="pb-3">
@@ -76,11 +73,10 @@ const BarterFilters = ({
                 variant="ghost" 
                 size="sm" 
                 onClick={() => {
-                  setLocationFilter('');
-                  setCategoryFilter('');
-                  setConditionFilter('');
-                  // Fixed: Changed setAvailabilityChange to use empty array
-                  handleAvailabilityChange(''); 
+                  setLocationFilter('all');
+                  setCategoryFilter('all');
+                  setConditionFilter('all');
+                  handleAvailabilityChange('');
                 }}
                 className="text-xs h-8"
               >
@@ -108,7 +104,7 @@ const BarterFilters = ({
                     <SelectValue placeholder="All locations" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All locations</SelectItem>
+                    <SelectItem value="all">All locations</SelectItem>
                     {locations.map(location => (
                       <SelectItem key={location} value={location}>
                         {location}
@@ -125,7 +121,7 @@ const BarterFilters = ({
                     <SelectValue placeholder="All categories" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All categories</SelectItem>
+                    <SelectItem value="all">All categories</SelectItem>
                     {categories.map(category => category && (
                       <SelectItem key={category} value={category}>
                         {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -142,7 +138,7 @@ const BarterFilters = ({
                     <SelectValue placeholder="Any condition" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Any condition</SelectItem>
+                    <SelectItem value="all">Any condition</SelectItem>
                     <SelectItem value="new">New</SelectItem>
                     <SelectItem value="like-new">Like New</SelectItem>
                     <SelectItem value="good">Good</SelectItem>
