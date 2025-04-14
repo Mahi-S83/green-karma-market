@@ -41,14 +41,23 @@ const BarterItemCard = ({ item }: BarterItemCardProps) => {
     }
   };
 
+  // Ensure image URL is valid by providing a fallback
+  const imageUrl = item.imageUrl && item.imageUrl.trim() !== '' 
+    ? item.imageUrl 
+    : 'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+
   return (
     <Card className="h-full flex flex-col overflow-hidden transition-all duration-300 hover:shadow-md border-forest-100">
       <Link to={`/barter/${item.id}`} className="overflow-hidden">
         <div className="aspect-square overflow-hidden relative">
           <img
-            src={item.imageUrl}
+            src={imageUrl}
             alt={item.title}
             className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
+            onError={(e) => {
+              // Fallback image if the primary one fails to load
+              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+            }}
           />
           {item.condition && (
             <div className={`absolute top-2 right-2 px-2 py-1 rounded-full text-xs font-medium ${getConditionColor(item.condition)}`}>

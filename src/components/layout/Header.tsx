@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { 
   ShoppingCart, 
   Menu, 
@@ -16,8 +16,18 @@ import { Input } from "@/components/ui/input";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Simulated login state
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      navigate(`/products?search=${encodeURIComponent(searchTerm.trim())}`);
+      setSearchTerm("");
+    }
+  };
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -47,14 +57,16 @@ const Header = () => {
 
           {/* Search, Cart, and Login */}
           <div className="hidden md:flex items-center space-x-4">
-            <div className="relative">
+            <form onSubmit={handleSearch} className="relative">
               <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input 
                 type="search"
                 placeholder="Search products..."
                 className="w-64 pl-8 rounded-full bg-muted/50 border-forest-200 focus-visible:ring-forest-500"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
               />
-            </div>
+            </form>
             <Button variant="ghost" size="icon" asChild>
               <Link to="/cart" aria-label="Shopping cart">
                 <ShoppingCart className="h-5 w-5 text-forest-700" />
@@ -116,14 +128,17 @@ const Header = () => {
               >
                 About Us
               </Link>
-              <div className="relative">
+              <form onSubmit={handleSearch} className="relative">
                 <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input 
                   type="search"
                   placeholder="Search products..."
                   className="w-full pl-8 rounded-full bg-muted/50 border-forest-200"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
                 />
-              </div>
+                <Button type="submit" className="sr-only">Search</Button>
+              </form>
               <div className="flex space-x-4 pt-2">
                 <Button variant="ghost" size="icon" asChild className="flex-1">
                   <Link to="/cart" className="flex items-center justify-center space-x-2">
