@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send } from 'lucide-react';
+import { Send, HelpCircle } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import ChatMessage, { MessageType } from './ChatMessage';
@@ -21,7 +21,12 @@ const ChatBot = ({ isOpen }: ChatBotProps) => {
     {
       id: '1',
       type: 'bot',
-      content: 'Hello! I\'m EcoBot, your sustainable shopping assistant. I can help you find eco-friendly products, explain their environmental benefits, or answer questions about sustainable living. How can I assist you today?',
+      content: 'Hello! I\'m EcoBot, your sustainable shopping assistant. Here are some questions you can ask me:' + 
+      '\n\n• "What bamboo products do you have?"' +
+      '\n• "Find me organic kitchen items"' +
+      '\n• "Show me eco-friendly products under ₹500"' +
+      '\n• "Tell me about sustainable materials"' +
+      '\n• "What makes your products eco-friendly?"',
       timestamp: new Date(),
     },
   ]);
@@ -129,13 +134,79 @@ const ChatBot = ({ isOpen }: ChatBotProps) => {
     }, 500);
   };
 
+  const suggestedQuestions = [
+    "What bamboo products do you have?",
+    "Find me organic kitchen items",
+    "Show me eco-friendly products under ₹500",
+    "Tell me about sustainable materials",
+    "What makes your products eco-friendly?",
+    "Which products are best for zero waste living?",
+    "Recommend products in the personal care category",
+  ];
+
+  const handleSuggestedQuestion = (question: string) => {
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      type: 'user',
+      content: question,
+      timestamp: new Date(),
+    };
+
+    setMessages((prev) => [...prev, userMessage]);
+
+    setTimeout(() => {
+      const botResponse = generateBotResponse(userMessage.content);
+      
+      const botMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        type: 'bot',
+        content: botResponse,
+        timestamp: new Date(),
+      };
+      
+      setMessages((prev) => [...prev, botMessage]);
+    }, 500);
+  };
+
   if (!isOpen) return null;
 
   return (
     <div className="fixed bottom-24 right-6 z-50 w-80 md:w-96 h-[60vh] bg-white rounded-lg shadow-xl flex flex-col border border-gray-200">
-      <div className="bg-forest-600 text-white px-4 py-3 rounded-t-lg">
-        <h3 className="font-medium">EcoBot Assistant</h3>
-        <p className="text-xs opacity-90">Ask me about sustainable products</p>
+      <div className="bg-forest-600 text-white px-4 py-3 rounded-t-lg flex justify-between items-center">
+        <div>
+          <h3 className="font-medium">EcoBot Assistant</h3>
+          <p className="text-xs opacity-90">Ask me about sustainable products</p>
+        </div>
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          className="text-white hover:bg-forest-700"
+          onClick={() => {
+            const questionContainer = document.getElementById('suggested-questions');
+            if (questionContainer) {
+              questionContainer.classList.toggle('hidden');
+            }
+          }}
+        >
+          <HelpCircle className="h-5 w-5" />
+        </Button>
+      </div>
+      
+      <div id="suggested-questions" className="bg-forest-50 p-3 hidden">
+        <h4 className="text-sm font-semibold mb-2 text-forest-800">Try asking me:</h4>
+        <div className="flex flex-wrap gap-2">
+          {suggestedQuestions.map((q, index) => (
+            <Button 
+              key={index} 
+              variant="outline" 
+              size="sm" 
+              className="text-xs border-forest-600 text-forest-700 hover:bg-forest-100"
+              onClick={() => handleSuggestedQuestion(q)}
+            >
+              {q}
+            </Button>
+          ))}
+        </div>
       </div>
       
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
