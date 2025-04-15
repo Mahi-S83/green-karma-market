@@ -13,6 +13,7 @@ import BarterDetail from "./pages/BarterDetail";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
+import Cart from "./pages/Cart";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/barter/:id" element={<BarterDetail />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/cart" element={<Cart />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
