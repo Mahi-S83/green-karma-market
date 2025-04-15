@@ -1,4 +1,3 @@
-
 import { Product } from '@/types/product';
 
 export const products: Product[] = [
@@ -7,7 +6,7 @@ export const products: Product[] = [
     name: "Bamboo Cutlery Set",
     description: "Portable bamboo cutlery set with knife, fork, spoon and chopsticks. Perfect for on-the-go meals without plastic waste.",
     price: 499,
-    imageUrl: "https://images.unsplash.com/photo-1584346233277-6ba261100c06?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "kitchen",
     badges: ["sustainable", "organic"],
     materials: ["bamboo"],
@@ -46,7 +45,7 @@ export const products: Product[] = [
     name: "Coconut Bowl Set",
     description: "Set of 2 handcrafted coconut bowls with bamboo spoons. Perfect for smoothie bowls, salads or display.",
     price: 650,
-    imageUrl: "https://images.unsplash.com/photo-1584916447972-ce4b11a80b25?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "kitchen",
     badges: ["organic", "recycled"],
     materials: ["bamboo"],
@@ -85,7 +84,7 @@ export const products: Product[] = [
     name: "Bamboo Toothbrush Set",
     description: "Pack of 4 biodegradable bamboo toothbrushes with charcoal-infused bristles.",
     price: 299,
-    imageUrl: "https://images.unsplash.com/photo-1607613009906-55638d22169a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1603533398422-64f83bf30c18?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "personal",
     badges: ["organic", "sustainable"],
     materials: ["bamboo"],
@@ -124,7 +123,7 @@ export const products: Product[] = [
     name: "Handmade Shea Butter Soap",
     description: "Natural, cold-processed shea butter soap. Free from parabens, SLS and plastic packaging.",
     price: 199,
-    imageUrl: "https://images.unsplash.com/photo-1607006344380-b4775bac758c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1614806687398-3f9385967cc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "personal",
     badges: ["organic", "sustainable"],
     materials: [],
@@ -137,7 +136,7 @@ export const products: Product[] = [
     name: "Recycled Glass Storage Jars",
     description: "Set of 3 airtight storage jars made from recycled glass. Perfect for pantry organization.",
     price: 750,
-    imageUrl: "https://images.unsplash.com/photo-1622022526458-530fa6599fb8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1620706857370-e1b9770e8bb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "kitchen",
     badges: ["recycled", "sustainable"],
     materials: [],
@@ -170,13 +169,13 @@ export const categories = [
   {
     id: "personal",
     name: "Personal Care",
-    image: "https://images.unsplash.com/photo-1607006344380-b4775bac758c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1614806687398-3f9385967cc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     description: "Natural, plastic-free personal care"
   },
   {
     id: "kitchen",
     name: "Kitchen & Dining",
-    image: "https://images.unsplash.com/photo-1584346233277-6ba261100c06?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     description: "Eco-friendly kitchen essentials"
   },
   {
