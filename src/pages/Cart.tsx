@@ -60,7 +60,7 @@ const Cart = () => {
                         <h3 className="text-lg font-medium">{item.product.name}</h3>
                       </Link>
                       <p className="font-semibold text-forest-700">
-                        ${(item.product.price / 100).toFixed(2)}
+                        ₹{item.product.price.toLocaleString('en-IN')}
                       </p>
                     </div>
                     
@@ -128,7 +128,7 @@ const Cart = () => {
                 {cartItems.map((item) => (
                   <div key={item.product.id} className="flex justify-between text-sm">
                     <span>{item.product.name} (x{item.quantity})</span>
-                    <span>${((item.product.price * item.quantity) / 100).toFixed(2)}</span>
+                    <span>₹{(item.product.price * item.quantity).toLocaleString('en-IN')}</span>
                   </div>
                 ))}
               </div>
@@ -136,7 +136,7 @@ const Cart = () => {
               <div className="border-t pt-4 mt-4">
                 <div className="flex justify-between font-medium">
                   <span>Subtotal</span>
-                  <span>${(totalPrice / 100).toFixed(2)}</span>
+                  <span>₹{totalPrice.toLocaleString('en-IN')}</span>
                 </div>
                 <div className="flex justify-between text-sm text-muted-foreground mt-1">
                   <span>Shipping</span>
@@ -144,7 +144,7 @@ const Cart = () => {
                 </div>
                 <div className="flex justify-between font-semibold text-lg mt-4">
                   <span>Total</span>
-                  <span>${(totalPrice / 100).toFixed(2)}</span>
+                  <span>₹{totalPrice.toLocaleString('en-IN')}</span>
                 </div>
               </div>
               
